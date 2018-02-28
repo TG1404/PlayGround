@@ -1,0 +1,41 @@
+group 'PlayGround'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+buildscript {
+    ext{
+        junitVersion = '4.12'
+        springVersion = '1.5.10.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies{
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springVersion"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:$springVersion"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springVersion"
+    testCompile "junit:junit:$junitVersion"
+}
+
+bootRepackage{
+    mainClass = 'playground.Application'
+
+    classifier = 'boot'
+}
