@@ -8,8 +8,10 @@ targetCompatibility = 1.8
 
 buildscript {
     ext{
-        junitVersion = '4.12'
-        springVersion = '1.5.10.RELEASE'
+        junit_version = '5.1.0'
+        spring_version = '1.5.10.RELEASE'
+        hibernate_version = '5.0.1.Final'
+        lombok_version ='1.16.20'
     }
 
     repositories {
@@ -17,7 +19,7 @@ buildscript {
     }
 
     dependencies{
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springVersion"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_version"
     }
 }
 
@@ -28,10 +30,22 @@ repositories {
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    compile "org.springframework.boot:spring-boot-starter-web:$springVersion"
+    // Spring
+    compile "org.springframework.boot:spring-boot-starter-web:$spring_version"
 
-    testCompile "org.springframework.boot:spring-boot-starter-test:$springVersion"
-    testCompile "junit:junit:$junitVersion"
+    // Hibernate
+    compile "org.hibernate:hibernate-core:$hibernate_version"
+    compile "org.hibernate:hibernate-entitymanager:$hibernate_version"
+
+    // Lombok
+    compile "org.projectlombok:lombok:$lombok_version"
+
+    // Spring test
+    testCompile "org.springframework.boot:spring-boot-starter-test:$spring_version"
+
+    // Junit 5
+    testCompile "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junit_version"
 }
 
 bootRepackage{
