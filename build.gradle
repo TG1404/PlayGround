@@ -11,7 +11,8 @@ buildscript {
         junit_version = '5.1.0'
         spring_version = '1.5.10.RELEASE'
         hibernate_version = '5.0.1.Final'
-        lombok_version ='1.16.20'
+        lombok_version = '1.16.20'
+        h2_version = '1.4.196'
     }
 
     repositories {
@@ -39,6 +40,9 @@ dependencies {
 
     // Lombok
     compile "org.projectlombok:lombok:$lombok_version"
+
+    // H2
+    compile "com.h2database:h2:$h2_version"
 
     // Spring test
     testCompile "org.springframework.boot:spring-boot-starter-test:$spring_version"
